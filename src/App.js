@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState('All');
 
   function addTask(name) {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
