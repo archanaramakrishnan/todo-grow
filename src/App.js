@@ -1,5 +1,6 @@
 import Todo from "./components/Todo";
 import Form from "./components/Form";
+import Graphics from "./components/Graphics";
 import FilterButton from "./components/FilterButton";
 //A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 import { nanoid } from "nanoid";
@@ -95,6 +96,7 @@ function App(props) {
 
   return (
     <div className="todoapp stack-large">
+      <Graphics/>
       <h1>TODO: Grow</h1>
       <Form addTask={addTask}/>
       <div className="filters btn-group stack-exception">
