@@ -20,10 +20,10 @@ export default function Tree(props) {
     }
   
     p5.draw = () => {
-      p5.background(100)
+      p5.background(220)
       // translate to the center of the screen
       p5.translate(0, height/2)
-      p5.branch(100)
+      p5.branch(60)
     }
   
     p5.branch = (len) => {
@@ -40,14 +40,33 @@ export default function Tree(props) {
         //displace objects within the display window
         //The x parameter specifies left/right translation, the y parameter specifies up/down translation.
         p5.translate(0, -len) //translate to the end of the branch
-        p5.rotate(30)
-        p5.branch(len * 0.7)
-        
-        p5.rotate(-60)
-        p5.branch(len * 0.75)
+        p5.rotate(25)
+        p5.branch(len * p5.random(0.7, 0.9))
+        p5.rotate(p5.random(-50, -60))
+        p5.branch(len * p5.random(0.7, 0.9))
+      } else {
+        let r = 80 + p5.random(-20, 20)
+        let g = 120 + p5.random(-20, 20)
+        let b = 40 + p5.random(-20, 20)
+        p5.fill(r, g, b);
+        p5.noStroke()
+
+        p5.beginShape()
+        for(let i=45; i<135; i++) {
+          let rad = 10;
+          let x = rad * p5.cos(i)
+          let y = rad * p5.sin(i)
+          p5.vertex(x, y)
+        }
+        for(let i=135; i>40; i--) {
+          let rad = 10;
+          let x = rad * p5.cos(i)
+          let y = rad * p5.sin(-i) + 15
+          p5.vertex(x, y)
+        }
+        p5.endShape(p5.CLOSE)
       }
       p5.pop();
-      
     };
   }
 
