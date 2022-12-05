@@ -3,9 +3,27 @@ import React from "react";
 import { ReactP5Wrapper } from "react-p5-wrapper";
 
 export default function Tree(props) {
-  
-
   function sketch(p5) {
+    let IS_LEAF = true;
+
+    function colorGreenIfLeaf(isLeaf) {
+      if(isLeaf) {
+        return {
+          r: 80 + p5.random(-20, 20),
+          g: 120 + p5.random(-20, 20),
+          b: 40 + p5.random(-20, 20),
+          transparency: 200
+        }
+      }
+      else {
+        return {
+          r: 220 + p5.random(-20, 20),
+          g: 120 + p5.random(-20, 20),
+          b: 170 + p5.random(-20, 20),
+          transparency: 255
+        }
+      }
+    }
 
     let width = 500;
     let height = 400; 
@@ -27,6 +45,7 @@ export default function Tree(props) {
     }
   
     p5.branch = (len) => {
+      console.log(props.selfCare)
       // console.log(props.tasks) //yay it is accessible here!
       p5.push();
       if(len > 10) {
@@ -45,12 +64,29 @@ export default function Tree(props) {
         p5.rotate(p5.random(-50, -60))
         p5.branch(len * p5.random(0.7, 0.9))
       } else {
-        let r = 80 + p5.random(-20, 20)
-        let g = 120 + p5.random(-20, 20)
-        let b = 40 + p5.random(-20, 20)
-        p5.fill(r, g, b);
+
+        let r, g, b, transparency, color;
+        if(props.selfCare > 0){
+          color = colorGreenIfLeaf(IS_LEAF)
+          IS_LEAF = !IS_LEAF;
+          console.log("flipped!")
+        }
+        else {
+          color = colorGreenIfLeaf(true)
+        }
+        r = color.r
+        g = color.g
+        b = color.b
+        transparency = color.transparency;
+        
+        p5.fill(r, g, b, transparency);
         p5.noStroke()
 
+
+        
+
+        
+        
         p5.beginShape()
         for(let i=45; i<135; i++) {
           let rad = 10;

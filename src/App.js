@@ -26,6 +26,7 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  const [selfCare, setSelfCare] = useState("5");
   const [filter, setFilter] = useState('All');
 
   const filterButtonList = FILTER_NAMES.map((name) => (
@@ -96,7 +97,9 @@ function App(props) {
 
   return (
     <div className="todoapp stack-large">
-      <Tree tasks={taskList.length}/>
+      <Tree tasks={taskList.length}
+            selfCare={selfCare}
+      />
       <h1>TODO: Grow</h1>
       <Form addTask={addTask}/>
       <div className="filters btn-group stack-exception">
