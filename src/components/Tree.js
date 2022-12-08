@@ -5,16 +5,7 @@ import { ReactP5Wrapper } from "react-p5-wrapper";
 export default function Tree(props) {
   function sketch(p5) {
     let IS_LEAF = true;
-    let taskCount = props.tasks;
-    // console.log(taskCount)
-
-    function updateBranchLength() {
-      if(props.tasks !== taskCount) {
-        // cons
-      }
-
-    }
-
+    let selfCareCount = 400;
     function colorGreenIfLeaf(isLeaf) {
       if(isLeaf) {
         return {
@@ -35,15 +26,12 @@ export default function Tree(props) {
     }
 
     let width = p5.windowWidth;
-    let height = p5.windowHeight*0.9; 
-    // console.log(this.props.tasks)
+    let height = p5.windowHeight*0.9;
   
     p5.setup = () => { 
       p5.createCanvas(width, height, p5.WEBGL);
       p5.angleMode(p5.DEGREES)
-
       p5.noLoop()
-      // console.log(p5.angleMode());
     }
   
     p5.draw = () => {
@@ -52,8 +40,6 @@ export default function Tree(props) {
       p5.translate(0, height/2);
 
       let branchLength = props.tasks;
-      
-
       if(branchLength < 150)
       {
         branchLength = branchLength + (props.tasks * 15);
@@ -67,15 +53,11 @@ export default function Tree(props) {
     }
   
     p5.branch = (len) => {
-      // console.log(props.selfCare)
-      // console.log(props.tasks) //yay it is accessible here!
       p5.push();
       if(len > 10) {
 
         p5.strokeWeight(p5.map(len, 10, 100, 1, 15))
         p5.stroke(70, 40, 20, 100)
-        // stroke
-        //draw a line in 2D with a default width of 1 pixel
         //the y-coordinate of the second point should be negative of the length inorder for the tree to turn in the right direction
         p5.line(0, 0, 0, -len) 
         //displace objects within the display window
@@ -86,11 +68,12 @@ export default function Tree(props) {
         p5.rotate(p5.random(-50, -60))
         p5.branch(len * p5.random(0.7, 0.9))
       } else {
-
         let r, g, b, transparency, color;
-        if(props.selfCare > 0){
+        if(selfCareCount > 0) {
+          
           color = colorGreenIfLeaf(IS_LEAF)
           IS_LEAF = !IS_LEAF; //a counter governs how many flowers are produced based on self care
+          selfCareCount--;
         }
         else {
           color = colorGreenIfLeaf(true)
@@ -103,6 +86,7 @@ export default function Tree(props) {
         p5.fill(r, g, b, transparency);
         p5.noStroke()
         
+        //draw leaf
         p5.beginShape()
         for(let i=45; i<135; i++) {
           let rad = 10;

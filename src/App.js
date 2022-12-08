@@ -143,7 +143,7 @@ function App(props) {
         </Toolbar>
       </AppBar>
       <Tree tasks={taskList.length}
-                selfCare={selfCare}/>
+                selfCare={3}/>
 
       <div className="columns">
         <div className="column">
