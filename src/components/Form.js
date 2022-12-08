@@ -7,13 +7,13 @@ function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if(name === "") {
-            alert("Please enter what needs to be done before adding it")
-        }
-        else {
+        // if(name === "") {
+        //     alert("Please enter what needs to be done before adding it")
+        // }
+        // else {
             props.addTask(name);
             setName("");
-        }
+        // }
     }
 
     function handleChange(e) {

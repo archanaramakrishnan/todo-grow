@@ -142,6 +142,8 @@ function App(props) {
           </ThemeProvider>
         </Toolbar>
       </AppBar>
+      <Tree tasks={taskList.length}
+                selfCare={selfCare}/>
 
       <div className="columns">
         <div className="column">
@@ -160,8 +162,8 @@ function App(props) {
         </div>
 
         <div className="column">
-          <Tree tasks={taskList.length}
-                selfCare={selfCare}/>
+          <p>this is the center column!!!</p>
+          
         </div>
 
         <div className="column">

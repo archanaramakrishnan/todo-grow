@@ -76,7 +76,7 @@ body {
 }
 
 canvas {
-  position: fixed
+  position: fixed;
 }
 
 input[type="text"] {

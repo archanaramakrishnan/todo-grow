@@ -6,7 +6,7 @@ export default function Tree(props) {
   function sketch(p5) {
     let IS_LEAF = true;
     let taskCount = props.tasks;
-    console.log(taskCount)
+    // console.log(taskCount)
 
     function updateBranchLength() {
       if(props.tasks !== taskCount) {
@@ -34,8 +34,8 @@ export default function Tree(props) {
       }
     }
 
-    let width = p5.windowHeight/2;
-    let height = p5.windowHeight/2; 
+    let width = p5.windowWidth;
+    let height = p5.windowHeight*0.9; 
     // console.log(this.props.tasks)
   
     p5.setup = () => { 
@@ -49,17 +49,21 @@ export default function Tree(props) {
     p5.draw = () => {
       p5.background(220)
       // translate to the center of the screen
-      p5.translate(0, height/2)
-      //range is 20-60
+      p5.translate(0, height/2);
 
-      let branchLength = 20;
+      let branchLength = props.tasks;
+      
 
-      if(branchLength <= 60)
+      if(branchLength < 150)
       {
-        branchLength = 20 + (props.tasks * 5);
+        branchLength = branchLength + (props.tasks * 15);
+        console.log(props.tasks, branchLength)
+        p5.branch(branchLength)
       }
-
-      p5.branch(20 + (props.tasks * 5))
+      else {
+        p5.branch(branchLength)
+      }
+      
     }
   
     p5.branch = (len) => {
@@ -69,7 +73,7 @@ export default function Tree(props) {
       if(len > 10) {
 
         p5.strokeWeight(p5.map(len, 10, 100, 1, 15))
-        p5.stroke(70, 40, 20)
+        p5.stroke(70, 40, 20, 100)
         // stroke
         //draw a line in 2D with a default width of 1 pixel
         //the y-coordinate of the second point should be negative of the length inorder for the tree to turn in the right direction
