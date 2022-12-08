@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import EditIcon from '@mui/icons-material/Edit';
 
 function usePrevious(value) {
   const ref = useRef();
@@ -83,7 +84,7 @@ export default function Todo(props) {
               className="btn" 
               onClick= {() => setIsEditing(true)}
               ref={editButtonRef}>
-            Edit <span className="visually-hidden">{props.name}</span>
+             <EditIcon/> <span className="visually-hidden">{props.name}</span>
           </button>
           <button
             type="button"

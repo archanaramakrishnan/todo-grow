@@ -1,7 +1,7 @@
-/* RESETS */
+/* RESETS
 *,
 *::before,
-*::after {
+/* *::after {
   box-sizing: border-box;
 }
 *:focus {
@@ -66,9 +66,49 @@ body {
     font-size: 1.9rem;
     line-height: 1.31579;
   }
-}
+} */ 
 /*END RESETS*/
 /* GLOBAL STYLES */
+
+body {
+  font-family: 'Montserrat';
+  /* font-size: 22px; */
+}
+
+canvas {
+  position: fixed
+}
+
+input[type="text"] {
+  border-radius: 0;
+  width: 100%;
+}
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  appearance: none;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  flex: 33.33%;
+}
+
 .form-group > input[type="text"] {
   display: inline-block;
   margin-top: 0.4rem;

@@ -2,6 +2,12 @@ import Todo from "./components/Todo";
 import Form from "./components/Form";
 import Tree from "./components/Tree";
 import FilterButton from "./components/FilterButton";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 //A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 import { nanoid } from "nanoid";
 import React, { useState, useRef, useEffect } from "react";
@@ -26,7 +32,10 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
-  const [selfCare, setSelfCare] = useState("5");
+  
+  const [selfCare, setSelfCare] = useState([{ id: `todo-1`, name: "Zumba", completed: true },
+  { id: `todo-2`, name: "Meal prep", completed: false },
+  { id: `todo-3`, name: "Journal", completed: false }]);
   const [filter, setFilter] = useState('All');
 
   const filterButtonList = FILTER_NAMES.map((name) => (
@@ -83,6 +92,19 @@ function App(props) {
               )
             );
 
+    const selfCareList = selfCare
+    .map((task) => (
+        <Todo name={task.name} 
+              completed={task.completed} 
+              id={task.id}
+              key={task.id}
+              toggleTaskCompleted={toggleTaskCompleted}
+              deleteTask={deleteTask}
+              editTask={editTask}
+            />
+          )
+        );
+
   const tasksNoun = taskList.length === 1 ? "task" : "tasks";
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
   const listHeadingRef = useRef(null);
@@ -93,24 +115,73 @@ function App(props) {
       listHeadingRef.current.focus();
     }
   }, [tasks.length, prevTaskLength]);
+
+  const theme = createTheme();
+
+  theme.typography.h3 = {
+    fontSize: '1.2rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.4rem',
+    },
+  };
+
   
 
   return (
-    <div className="todoapp stack-large">
-      <Tree tasks={taskList.length}
-            selfCare={selfCare}
-      />
-      <h1>TODO: Grow</h1>
-      <Form addTask={addTask}/>
-      <div className="filters btn-group stack-exception">
-        {filterButtonList}
-      </div>
-      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
-        {headingText}
-      </h2>
+    <div>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+            <MenuIcon />
+          </IconButton>
+          <ThemeProvider theme={theme}>
+            <Typography fontFamily="Montserrat" variant="h4">TODO: Grow</Typography>
+          </ThemeProvider>
+        </Toolbar>
+      </AppBar>
 
-      {taskList}
+      <div className="columns">
+        <div className="column">
+          {/* Work */}
+          <div className="todoapp stack-small">
+            <Form title={"Work"} addTask={addTask}/>
+            <div className="filters btn-group stack-exception">
+              {filterButtonList}
+            </div>
+            <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
+              {headingText}
+            </h2>
+
+            {taskList}
+          </div>
+        </div>
+
+        <div className="column">
+          <Tree tasks={taskList.length}
+                selfCare={selfCare}/>
+        </div>
+
+        <div className="column">
+          {/* Self */}
+          <div className="todoapp stack-small">
+            <Form title={"Self"} addTask={addTask}/>
+            <div className="filters btn-group stack-exception">
+              {filterButtonList}
+            </div>
+            <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
+              {`${selfCareList.length} ${tasksNoun} remaining`}
+            </h2>
+
+            {selfCareList}
+          </div>
+        </div>
+      </div>
+
     </div>
+    
   );
 }
 

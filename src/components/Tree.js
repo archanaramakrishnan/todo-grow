@@ -5,6 +5,15 @@ import { ReactP5Wrapper } from "react-p5-wrapper";
 export default function Tree(props) {
   function sketch(p5) {
     let IS_LEAF = true;
+    let taskCount = props.tasks;
+    console.log(taskCount)
+
+    function updateBranchLength() {
+      if(props.tasks !== taskCount) {
+        // cons
+      }
+
+    }
 
     function colorGreenIfLeaf(isLeaf) {
       if(isLeaf) {
@@ -25,8 +34,8 @@ export default function Tree(props) {
       }
     }
 
-    let width = 500;
-    let height = 400; 
+    let width = p5.windowHeight/2;
+    let height = p5.windowHeight/2; 
     // console.log(this.props.tasks)
   
     p5.setup = () => { 
@@ -41,11 +50,20 @@ export default function Tree(props) {
       p5.background(220)
       // translate to the center of the screen
       p5.translate(0, height/2)
-      p5.branch(60)
+      //range is 20-60
+
+      let branchLength = 20;
+
+      if(branchLength <= 60)
+      {
+        branchLength = 20 + (props.tasks * 5);
+      }
+
+      p5.branch(20 + (props.tasks * 5))
     }
   
     p5.branch = (len) => {
-      console.log(props.selfCare)
+      // console.log(props.selfCare)
       // console.log(props.tasks) //yay it is accessible here!
       p5.push();
       if(len > 10) {
@@ -68,8 +86,7 @@ export default function Tree(props) {
         let r, g, b, transparency, color;
         if(props.selfCare > 0){
           color = colorGreenIfLeaf(IS_LEAF)
-          IS_LEAF = !IS_LEAF;
-          console.log("flipped!")
+          IS_LEAF = !IS_LEAF; //a counter governs how many flowers are produced based on self care
         }
         else {
           color = colorGreenIfLeaf(true)
@@ -81,11 +98,6 @@ export default function Tree(props) {
         
         p5.fill(r, g, b, transparency);
         p5.noStroke()
-
-
-        
-
-        
         
         p5.beginShape()
         for(let i=45; i<135; i++) {
