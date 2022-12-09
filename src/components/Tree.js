@@ -48,18 +48,14 @@ export default function Tree(props) {
       p5.translate(width/2, height);
 
       let branchLength = props.tasks;
-      if(branchLength < 150)
-      {
+      if(branchLength < 150) {
         branchLength = branchLength + (props.tasks * 15);
-        console.log(props.tasks, branchLength)
+        // console.log(props.tasks, branchLength)
         p5.branch(branchLength)
       }
       else {
         p5.branch(branchLength)
       }
-
-      
-      
     }
   
     p5.branch = (len) => {

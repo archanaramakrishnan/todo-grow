@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
-const DATA = [];
+const taskData = JSON.parse(localStorage.getItem("tasks")) || [];
+const selfCareData = JSON.parse(localStorage.getItem("selfCare")) || [];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App tasks={DATA}/>
+    <App 
+      tasks={taskData}
+      selfCare={selfCareData}/>
   </React.StrictMode>
 );
 

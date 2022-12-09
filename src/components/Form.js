@@ -7,26 +7,28 @@ function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // if(name === "") {
-        //     alert("Please enter what needs to be done before adding it")
-        // }
-        // else {
+        if(name === "") {
+            alert("Please enter what needs to be done before adding it")
+        }
+        else {
             props.addTask(name);
             setName("");
-        // }
+        }
     }
 
     function handleChange(e) {
         setName(e.target.value);
     }
 
+    const TitleIcon = props.icon;
 
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="label-wrapper">
-            <label htmlFor="new-todo-input" className="label">
-                {props.title}
-            </label>
+                <TitleIcon fontSize="25px"/>
+                <label htmlFor="new-todo-input" className="label">
+                &nbsp;{props.title}
+                </label>
             </h2>
             <span>
                 <input

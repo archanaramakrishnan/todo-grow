@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todo-grow/static/css/main.36c0cecd.css",
+    "main.js": "/todo-grow/static/js/main.fa13c25a.js",
+    "index.html": "/todo-grow/index.html",
+    "main.36c0cecd.css.map": "/todo-grow/static/css/main.36c0cecd.css.map",
+    "main.fa13c25a.js.map": "/todo-grow/static/js/main.fa13c25a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36c0cecd.css",
+    "static/js/main.fa13c25a.js"
+  ]
+}
