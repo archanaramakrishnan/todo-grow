@@ -1,4 +1,5 @@
-import { random } from "nanoid";
+//inspired by https://youtu.be/-3HwUKsovBE
+
 import React from "react";
 import { ReactP5Wrapper } from "react-p5-wrapper";
 
