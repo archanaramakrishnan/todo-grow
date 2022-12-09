@@ -234,7 +234,7 @@ function App(props) {
 
         <div className="column">
           {/* Self */}
-          <div className="todoapp stack-small">
+          <div className="todoapp selfapp stack-small">
             <Form title={"Self"} icon={LocalFloristRoundedIcon} addTask={addSelfCare}/>
             <div className="filters btn-group stack-exception">
               {filterButtonList}

@@ -5,7 +5,9 @@ import { ReactP5Wrapper } from "react-p5-wrapper";
 export default function Tree(props) {
   function sketch(p5) {
     let IS_LEAF = true;
-    let selfCareCount = 200;
+    let selfCareCount;
+    console.log(props.selfCare)
+    props.selfCare == 0 ? selfCareCount = 0 : selfCareCount = 200;
     function colorGreenIfLeaf(isLeaf) {
       if(isLeaf) {
         return {
