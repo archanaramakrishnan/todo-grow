@@ -30,7 +30,6 @@ function Form(props) {
                 &nbsp;{props.title}
                 </label>
             </h2>
-            <label htmlFor={`new-${props.id}-input`} className="label"> </label>
             <input
                 type="text"
                 id={`new-${props.id}-input`}
