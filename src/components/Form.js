@@ -33,7 +33,7 @@ function Form(props) {
             <span>
                 <input
                     type="text"
-                    id="new-todo-input"
+                    id={`new-${props.id}-input`}
                     className="input"
                     name="text"
                     autoComplete="off"

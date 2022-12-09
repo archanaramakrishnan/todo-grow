@@ -211,7 +211,7 @@ function App(props) {
           
 
           <div className="todoapp stack-small">
-            <Form title={"Work"} icon={ParkRoundedIcon} addTask={addTask}/>
+            <Form title={"Work"} icon={ParkRoundedIcon} addTask={addTask} id="todo"/>
             <div className="filters btn-group stack-exception">
               {filterButtonList}
             </div>
@@ -235,7 +235,7 @@ function App(props) {
         <div className="column">
           {/* Self */}
           <div className="todoapp selfapp stack-small">
-            <Form title={"Self"} icon={LocalFloristRoundedIcon} addTask={addSelfCare}/>
+            <Form title={"Self"} icon={LocalFloristRoundedIcon} addTask={addSelfCare} id="self"/>
             <div className="filters btn-group stack-exception">
               {filterButtonList}
             </div>
