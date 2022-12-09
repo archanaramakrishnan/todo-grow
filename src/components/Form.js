@@ -27,7 +27,7 @@ function Form(props) {
             <h2 className="label-wrapper">
                 <TitleIcon fontSize="25px"/>
                 <label htmlFor="new-todo-input" className="label">
-                &nbsp;{props.title}
+                {props.title}
                 </label>
             </h2>
             <span>
