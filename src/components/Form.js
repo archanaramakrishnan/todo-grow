@@ -24,22 +24,24 @@ function Form(props) {
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="label-wrapper">
-            <label htmlFor="new-todo-input" className="label__small">
+            <label htmlFor="new-todo-input" className="label">
                 {props.title}
             </label>
             </h2>
-            <input
-                type="text"
-                id="new-todo-input"
-                className="input"
-                name="text"
-                autoComplete="off"
-                value={name}
-                onChange={handleChange}
-            />
-            <button type="submit" className="btn btn__primary">
-            Add
-            </button>
+            <span>
+                <input
+                    type="text"
+                    id="new-todo-input"
+                    className="input"
+                    name="text"
+                    autoComplete="off"
+                    value={name}
+                    onChange={handleChange}
+                />
+                <button type="submit" className="btn btn__primary">
+                Add
+                </button>
+            </span>
       </form>
     );
 }

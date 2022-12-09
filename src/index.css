@@ -1,7 +1,7 @@
-/* RESETS
+/* RESETS */
 *,
 *::before,
-/* *::after {
+*::after {
   box-sizing: border-box;
 }
 *:focus {
@@ -53,21 +53,23 @@ input {
 input[type="text"] {
   border-radius: 0;
 }
+
 body {
   width: 100%;
-  max-width: 68rem;
+  /* max-width: 68rem; */
   margin: 0 auto;
-  font: 1.6rem/1.25 Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #4d4d4d;
+  /* font: 1.6rem/1.25 Arial, sans-serif; */
+  /* background-color: #f5f5f5; */
 }
 @media screen and (min-width: 620px) {
   body {
     font-size: 1.9rem;
     line-height: 1.31579;
   }
-} */ 
+}
 /*END RESETS*/
+
+
 /* GLOBAL STYLES */
 
 body {
@@ -98,10 +100,14 @@ button {
   appearance: none;
 }
 
+.svg_icons {
+  transform: scale(1.8);
+}
+
 .columns {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
 }
 
@@ -128,9 +134,9 @@ button {
   border-color: #4d4d4d;
 }
 .btn__danger {
-  color: #fff;
-  background-color: #ca3c3c;
-  border-color: #bd2130;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-color: #ee9c9c;
 }
 .btn__filter {
   border-color: lightgrey;
@@ -186,7 +192,8 @@ button {
 }
 /* END GLOBAL STYLES */
 .todoapp {
-  background: #fff;
+  /* background: #fff; */
+  background: rgba(246, 243, 243, 0.5);
   margin: 2rem 0 4rem 0;
   padding: 1rem;
   position: relative;
@@ -330,3 +337,8 @@ button {
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+} */

@@ -5,7 +5,7 @@ import { ReactP5Wrapper } from "react-p5-wrapper";
 export default function Tree(props) {
   function sketch(p5) {
     let IS_LEAF = true;
-    let selfCareCount = 400;
+    let selfCareCount = 200;
     function colorGreenIfLeaf(isLeaf) {
       if(isLeaf) {
         return {
@@ -29,15 +29,23 @@ export default function Tree(props) {
     let height = p5.windowHeight*0.9;
   
     p5.setup = () => { 
-      p5.createCanvas(width, height, p5.WEBGL);
-      p5.angleMode(p5.DEGREES)
-      p5.noLoop()
+      p5.createCanvas(width, height);
+      let blue2 = p5.color(255);
+      let blue1 = p5.color(63, 191, 191);
+      
+      for(let y=0; y<height; y++){
+        let n = p5.map(y,0,height,0,1);
+        let newc = p5.lerpColor(blue1,blue2,n);
+        p5.stroke(newc);
+        p5.line(0,y,width, y);
     }
+    p5.angleMode(p5.DEGREES)
+      p5.noLoop()
+  }
   
     p5.draw = () => {
-      p5.background(220)
       // translate to the center of the screen
-      p5.translate(0, height/2);
+      p5.translate(width/2, height);
 
       let branchLength = props.tasks;
       if(branchLength < 150)
@@ -49,6 +57,8 @@ export default function Tree(props) {
       else {
         p5.branch(branchLength)
       }
+
+      
       
     }
   
@@ -57,7 +67,7 @@ export default function Tree(props) {
       if(len > 10) {
 
         p5.strokeWeight(p5.map(len, 10, 100, 1, 15))
-        p5.stroke(70, 40, 20, 100)
+        p5.stroke(70, 40, 20, 200)
         //the y-coordinate of the second point should be negative of the length inorder for the tree to turn in the right direction
         p5.line(0, 0, 0, -len) 
         //displace objects within the display window

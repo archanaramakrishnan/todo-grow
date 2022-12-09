@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function usePrevious(value) {
   const ref = useRef();
@@ -68,6 +69,7 @@ export default function Todo(props) {
   const viewTemplate = (
     <div className="stack-small">
       <div className="c-cb">
+          {/* <div className="container"> */}
           <input
             id={props.id}
             type="checkbox"
@@ -84,15 +86,16 @@ export default function Todo(props) {
               className="btn" 
               onClick= {() => setIsEditing(true)}
               ref={editButtonRef}>
-             <EditIcon/> <span className="visually-hidden">{props.name}</span>
+             <EditIcon fontSize="large"/> <span className="visually-hidden">{props.name}</span>
           </button>
           <button
             type="button"
             className="btn btn__danger"
             onClick={() => props.deleteTask(props.id)}>
-            Delete <span className="visually-hidden">{props.name}</span>
+            <DeleteIcon fontSize="large" style={{ color: 'red' }} /> <span className="visually-hidden">{props.name}</span>
           </button>
         </div>
+        {/* </div> */}
     </div>
   );
 

@@ -4,11 +4,7 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
-const DATA = [
-  { id: "0", name: "Eat", completed: true },
-  { id: "1", name: "Sleep", completed: false },
-  { id: "2", name: "Repeat", completed: false }
-];
+const DATA = [];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

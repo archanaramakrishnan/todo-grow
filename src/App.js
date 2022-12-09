@@ -132,13 +132,11 @@ function App(props) {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar style={{ background: "#458f54" }} position="static">
         <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
           <ThemeProvider theme={theme}>
-            <Typography fontFamily="Montserrat" variant="h4">TODO: Grow</Typography>
+            <Typography fontFamily="Montserrat" variant="h1" color="black">TODO:&nbsp;</Typography>
+            <Typography fontFamily="Montserrat" variant="h1">Grow</Typography>
           </ThemeProvider>
         </Toolbar>
       </AppBar>
@@ -162,7 +160,7 @@ function App(props) {
         </div>
 
         <div className="column">
-          <p>this is the center column!!!</p>
+          {/* middle space for tree */}
           
         </div>
 
