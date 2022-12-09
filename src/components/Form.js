@@ -26,11 +26,12 @@ function Form(props) {
         <form onSubmit={handleSubmit}>
             <h2 className="label-wrapper">
                 <TitleIcon fontSize="25px"/>
-                <label htmlFor="new-todo-input">
-                {props.title}
+                <label htmlFor="new-todo-input" className="label">
+                &nbsp;{props.title}
                 </label>
             </h2>
             <span>
+                <label htmlFor={`new-${props.id}-input`} className="label"> </label>
                 <input
                     type="text"
                     id={`new-${props.id}-input`}
